@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Toast;
 
 
 import com.example.ndpsh.prueba_08.Adapters.PagerAdapter;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
-        //TabLayout implementando la parte logica
+        //TabLayout implementandolo en Main Activity
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
         tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
@@ -44,18 +45,19 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                Toast.makeText(MainActivity.this, "Selected->"+tab.getText(), Toast.LENGTH_SHORT).show();
                 int position = tab.getPosition();
                 viewPager.setCurrentItem(position);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                Toast.makeText(MainActivity.this, "Unselected ->"+tab.getText(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                Toast.makeText(MainActivity.this, "Reselected->"+tab.getText(), Toast.LENGTH_SHORT).show();
             }
         });
 
